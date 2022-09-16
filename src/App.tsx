@@ -2,8 +2,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Details } from "./components/Details";
-import { Home } from "./components/Home";
+import { Details } from "./Pages/Details";
+import { Home } from "./Pages/Home";
 
 const App = () => {
   const dispatch = useDispatch();
