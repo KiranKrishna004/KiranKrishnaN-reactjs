@@ -1,12 +1,10 @@
 /** @format */
 
-import { features } from "process";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../hooks/hooks";
 import { Products } from "../interfaces/interfaces";
-import { Favorites } from "../pages/Favorites";
 
 export const Card = ({ product }: { product: Products }) => {
 	const dispatch = useDispatch();
