@@ -4,11 +4,11 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Details } from "./Pages/Details";
-import { Home } from "./Pages/Home";
-import { Create } from "./Pages/Create";
-import { Favorites } from "./Pages/Favorites";
-import { Products } from "./interfaces/interfaces";
+import { Details } from "./pages/Details";
+import { Home } from "./pages/Home";
+import { Create } from "./pages/Create";
+import { Favorites } from "./pages/Favorites";
+import { Navbar } from "./components/Navbar";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -47,14 +47,17 @@ const App = () => {
 		};
 	}, []);
 	return (
-		<Router>
-			<Routes>
-				<Route path='/:id' element={<Details />}></Route>
-				<Route path='/favorites' element={<Favorites />}></Route>
-				<Route path='/create' element={<Create />}></Route>
-				<Route path='/' element={<Home />}></Route>
-			</Routes>
-		</Router>
+		<div className='sm:max-w-xl xs:max-w-md md:max-w-3xl lg:max-w-7xl max-w-2xl mx-auto overflow-hidden'>
+			<Router>
+				<Navbar />
+				<Routes>
+					<Route path='/create' element={<Create />}></Route>
+					<Route path='/favorites' element={<Favorites />}></Route>
+					<Route path='/:id' element={<Details />}></Route>
+					<Route path='/' element={<Home />}></Route>
+				</Routes>
+			</Router>
+		</div>
 	);
 };
 

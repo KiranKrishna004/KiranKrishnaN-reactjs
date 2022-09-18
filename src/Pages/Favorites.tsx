@@ -1,12 +1,12 @@
 /** @format */
-
-import React from "react";
+import emptyList from "../assets/emptyList.png";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import { useAppSelector } from "../hooks/hooks";
 import { Products } from "../interfaces/interfaces";
 
 export const Favorites = () => {
+	const favList = JSON.parse(localStorage.getItem("favorites") || "{}");
 	const favorites = useAppSelector(({ favorites }) =>
 		favorites.favorites.filter(
 			(value: Products, index: number, self: Products[]) =>
@@ -16,11 +16,20 @@ export const Favorites = () => {
 				)
 		)
 	);
+	if (favList?.length === 0) {
+		return (
+			<>
+				<div className='h-screen flex justify-center items-center'>
+					<img src={emptyList} />
+				</div>
+			</>
+		);
+	}
 	if (favorites.length === 0) {
 		return <Loading />;
 	}
 	return (
-		<div className='sm:max-w-xl xs:max-w-md md:max-w-3xl lg:max-w-7xl max-w-2xl mx-auto'>
+		<>
 			<div className='text-3xl font-bold my-7'>Favorites</div>
 			<div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5'>
 				{favorites.map((favorite, index) => (
@@ -51,6 +60,6 @@ export const Favorites = () => {
 					</div>
 				))}
 			</div>
-		</div>
+		</>
 	);
 };

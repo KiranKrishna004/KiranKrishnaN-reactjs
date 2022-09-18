@@ -1,6 +1,6 @@
 /** @format */
 
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import { useAppSelector, useAppDispatch } from "../hooks/hooks";
 import { Products } from "../interfaces/interfaces";
@@ -22,12 +22,14 @@ export const Details = () => {
 		return <Loading />;
 	}
 	return (
-		<div className='overflow-none'>
-			<button className='flex' onClick={handleDelete}>
-				delete item
+		<div className=' h-screen overflow-hidden sm:max-w-xl  xs:max-w-md md:max-w-3xl lg:max-w-7xl max-w-2xl mx-auto flex-col overflow-hidden'>
+			<button
+				className='mx-auto flex bg-red-100 border px-2 py-1 rounded font-bold border-red-100'
+				onClick={handleDelete}>
+				Delete
 			</button>
-			<div className='h-screen sm:max-w-xl flex items-center justify-center xs:max-w-md md:max-w-3xl lg:max-w-7xl max-w-2xl mx-auto'>
-				<div className='h-5/6 flex items-center'>
+			<div className='flex items-center justify-center h-5/6'>
+				<div className='flex items-center'>
 					<div className='grid grid-cols-2 gap-12'>
 						<img
 							src={selectedProduct[0]!.avatar}
